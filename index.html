@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+</head>
+<body>
+<style>
+    body {
+    background-color: #25383C;
+    }
+</style>
+<div>
+    <h1><span id="week"></span></h1>
+    <h1><span id="date"></span></h1>
+    <h1><span id="time"></span></h1>
+</div>
+
+<div>
+    <h1><span id="rss_title"></span></h1>
+    <p><span id="rss_content"></span></p>    
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script> 
+<script>
+function timer(){
+    let date = moment().format("dddd, MMMM Do YYYY");
+    let time = moment().format("hh:mm:ss");
+    let week = "Week:" + moment().week();
+    //let string = "Week" + week + "\n" + date + "\n" + time
+    document.getElementById('week').innerHTML = week;
+    document.getElementById('date').innerHTML = date;
+    document.getElementById('time').innerHTML = time;
+    setTimeout(timer,1000);
+}
+timer();
+</script>
+
+<script src='rss.js' defer></script>
+
+<link rel='stylesheet' href='style.css'>
+
+<script src="./node_modules/rss-parser/dist/rss-parser.js"></script>
+
+<h1>RSS Reader (JavaScript)</h1>
+	<output>Loading...</output>
+	<template>
+		<h2></h2>
+		<h3></h3>
+		<a href='#'></a>
+		<p></p>
+	</template>
+<script>
+// Note: some RSS feeds can't be loaded in the browser due to CORS security.
+// To get around this, you can use a proxy.
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
+
+let parser = new RSSParser();
+parser.parseURL(CORS_PROXY + 'https://www.reddit.com/.rss', function(err, feed) {
+  if (err) throw err;
+  const title = feed.title
+  let content = ""
+  console.log(feed.title);  
+  feed.items.forEach(function(entry) {
+    content +=  entry.title + ':' + entry.link
+    console.log(entry.title + ':' + entry.link);
+  })
+  document.getElementById('rss_title').innerHTML = title;
+  document.getElementById('rss_content').innerHTML = content;  
+})
+
+</script>
+
+
+<!-- <div id="widgetmain" style="text-align:left;overflow-y:auto;overflow-x:hidden;width:300px;background-color:#transparent; border:1px solid #333333;"><div id="rsswidget" style="height:500px;"><iframe src="http://us1.rssfeedwidget.com/getrss.php?time=1581414493900&amp;x=https%3A%2F%2Frss.nytimes.com%2Fservices%2Fxml%2Frss%2Fnyt%2FWorld.xml&amp;w=300&amp;h=500&amp;bc=333333&amp;bw=1&amp;bgc=transparent&amp;m=20&amp;it=true&amp;t=(default)&amp;tc=333333&amp;ts=15&amp;tb=transparent&amp;il=true&amp;lc=0000FF&amp;ls=14&amp;lb=false&amp;id=true&amp;dc=333333&amp;ds=14&amp;idt=true&amp;dtc=284F2D&amp;dts=12" border="0" hspace="0" vspace="0" marginwidth="0" marginheight="0" style="border:0; padding:0; margin:0; width:300px; height:500px;" id="rssOutput" frameborder="no">Reading RSS Feed ...</iframe></div><div style="text-align:right;margin-bottom:0;border-top:1px solid #333333;" id="widgetbottom"><span style="font-size:70%"><a href="http://www.rssfeedwidget.com">rss feed widget</a>&nbsp;</span><br></div></div>
+-->
+<div>
+<a class="weatherwidget-io" href="https://forecast7.com/en/59d3318d07/stockholm/" data-label_1="STOCKHOLM" data-label_2="WEATHER" data-icons="Climacons Animated" data-theme="dark" >STOCKHOLM WEATHER</a>
+  <script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+  </script>
+</div>
+</body>
+</html> 
