@@ -12,17 +12,44 @@
     width: 40%;
     display: block;     
 }
-.rss {    
+.rss1 {    
     position: absolute;
-    right: 15%;
-    top: 20%;      
+    left: 30%;
+    top: 30%;      
     width: 20%;
     height: 60%;
     display: block;    
     overflow-y: auto;
     text-overflow: clip;
-    scrollbar-color: ;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.233) rgba(0, 0, 0, 0);
 }
+.rss1::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.233);
+}
+.rss1::-webkit-scrollbar {
+    width: 5px;
+}
+
+.rss2 {    
+    position: absolute;
+    right: 15%;
+    top: 25%;      
+    width: 20%;
+    height: 60%;
+    display: block;    
+    overflow-y: auto;
+    text-overflow: clip;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.233) rgba(0, 0, 0, 0);
+}
+.rss2::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.233);
+}
+.rss2::-webkit-scrollbar {
+    width: 5px;
+}
+
 .rss_title {
     font-size: small;  
     line-height: 100%;
