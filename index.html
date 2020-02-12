@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css"/>
     <style>
     body,h1,h2{font-family: "Raleway", sans-serif}
-    body, html {height: 100%}
+    body, html {margin: 0; height: 100%; overflow: hidden}
     p {line-height: 2}
     body {
     background-color: #404040;
@@ -24,14 +24,8 @@
     </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script> 
 <script src="./node_modules/rss-parser/dist/rss-parser.js"></script>
-<head>    
-        <!-- <header class="time w3-display-container w3-wide bgimg w3-grayscale-min" id="home"> -->
-        <header class="time" id="home">
-            
-          </header>
-   
-</head>
-<body class=body>
+
+<body>
 <div class=time>
 <div class="w3-display-middle w3-text-white w3-center">
     <h1 class="w3-jumbo"><span id="time"></span></h1>
@@ -47,7 +41,7 @@
 </div>
 
 <div class=rss>
-    <h3 class="w3-text-white"><span id="rss_title"></span></h3>
+    <p class="w3-text-white"><span id="rss_title"></span></p>
     <p class="w3-text-white"><span id="rss_content"></span></p>
 </div>
 
@@ -75,20 +69,13 @@
         parser.parseURL(CORS_PROXY + 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', function(err, feed) {
         if (err) throw err;
         const title = feed.title
-        let content = []
-        //console.log(feed.title);  
+        let content = []        
         feed.items.forEach(function(entry) {
-            //content.push[entry.title, entry.date, entry.link]
-            content.push('<h3>'+ entry.title + '</h3>' + '<p>'+ entry.contentSnippet + '</p>'  + '<p>'+ entry.isoDate + '</p>' + '<a href="' + entry.link +'">' + entry.link + '</a>')
-            //content.push{"title":entry.title}
-            //console.log(entry.title + ':' + entry.link);
+            content.push('<p class=rss_title href="' + entry.link +'">' + entry.title + '</p>' + '<p class=rss_text>'+ entry.contentSnippet + '</p>' + '<p class=rss_time>'+ entry.isoDate + '</p>')
         })
-        let str = ''
-        content.forEach(function(item){        
-        str += '<h3>'+ item[0] + '</h3>' + '<p>'+ item[1] + '</p>' + '<a href="' + item[2] +'">' + item[2] + '</a>';
-        });
+        content.toString();        
         document.getElementById('rss_title').innerHTML = title;
-        document.getElementById('rss_content').innerHTML = content;
+        document.getElementById('rss_content').innerHTML = content.join("\n");
         })
         // refresh every 30min
         setTimeout(rss,30000);

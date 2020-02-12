@@ -8,19 +8,34 @@
 .time {
     position: absolute;
     left: 12%;
-    top: 20%;      
+    top: 15%;      
     width: 40%;
     display: block;     
 }
 .rss {    
     position: absolute;
     right: 15%;
-    top: 30%;      
+    top: 20%;      
     width: 20%;
     height: 60%;
-    display: block;     
+    display: block;    
+    overflow-y: auto;
+    text-overflow: clip;
+    scrollbar-color: ;
 }
-.body {
-    height: 100%;
-    overflow-y: hidden;
+.rss_title {
+    font-size: small;  
+    line-height: 100%;
+    color: white;
+    text-decoration: none;
+}
+.rss_text {
+    font-size: smaller;
+    color: lightgray;
+    line-height: 100%;    
+}
+.rss_time {
+    font-size: xx-small;
+    color: lightgray;
+    line-height: 100%;  
 }
