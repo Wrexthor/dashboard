@@ -1,43 +1,26 @@
-@font-face{
-	font-family: 'Crimson Text';
-	src: url('CrimsonText.ttf');
+.weather{
+    position: absolute;
+    right: 12%;
+    top: 5%;      
+    width: 40%;    
+    display: block;      
 }
-html	{
-	font-family: 'Crimson Text', serif;
-	font-size: 11pt;
+.time {
+    position: absolute;
+    left: 12%;
+    top: 20%;      
+    width: 40%;
+    display: block;     
 }
-body{
-	width: 480px;
-	margin: auto;
+.rss {    
+    position: absolute;
+    right: 15%;
+    top: 30%;      
+    width: 20%;
+    height: 60%;
+    display: block;     
 }
-body > h1{
-	text-align: center;
-}
-h2{
-	color: orangered;
-	margin-bottom: 0;
-	font-size: 16pt;
-}
-
-a:link{
-	
-	color: dodgerblue;
-}
-h2+a:link{
-	
-	font-weight: bold;
-}
-h3{
-	margin-top: 0;
-	margin-bottom: 0;
-	font-size: 10pt;
-}
-p{
-	margin: 0;
-}
-output h1 {
-	background-color: orangered;
-	text-indent: 5px;
-	color:white;
-	font-size: 18pt;
+.body {
+    height: 100%;
+    overflow-y: hidden;
 }

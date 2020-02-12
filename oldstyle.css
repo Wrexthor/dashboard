@@ -1,0 +1,43 @@
+@font-face{
+	font-family: 'Crimson Text';
+	src: url('CrimsonText.ttf');
+}
+html	{
+	font-family: 'Crimson Text', serif;
+	font-size: 11pt;
+}
+body{
+	width: 480px;
+	margin: auto;
+}
+body > h1{
+	text-align: center;
+}
+h2{
+	color: orangered;
+	margin-bottom: 0;
+	font-size: 16pt;
+}
+
+a:link{
+	
+	color: dodgerblue;
+}
+h2+a:link{
+	
+	font-weight: bold;
+}
+h3{
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 10pt;
+}
+p{
+	margin: 0;
+}
+output h1 {
+	background-color: orangered;
+	text-indent: 5px;
+	color:white;
+	font-size: 18pt;
+}
