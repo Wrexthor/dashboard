@@ -29,8 +29,8 @@
 <div class=time>
 <div class="w3-display-middle w3-text-white w3-center">
     <h1 class="w3-jumbo"><span id="time"></span></h1>
-    <h2><span id="date"></span></h2>
     <h2><b><span id="week"></b></h2>
+    <h2><span id="date"></span></h2>    
 </div>
 </div>
 <div class="weather">
@@ -52,13 +52,13 @@
 
 <script>
     function timer(){
-        let date = moment().format("dddd, MMMM Do YYYY");
-        let time = moment().format("hh:mm:ss");
-        let week = "Week:" + moment().week();
-        //let string = "Week" + week + "\n" + date + "\n" + time
+        const date = moment().format("dddd, MMMM Do YYYY");
+        const time = moment().format("HH:mm:ss");
+        const week = "Week: " + moment().week();        
         document.getElementById('week').innerHTML = week;
         document.getElementById('date').innerHTML = date;
         document.getElementById('time').innerHTML = time;
+        // update canvas every second
         setTimeout(timer,1000);
     }
     timer();
@@ -83,9 +83,10 @@
         document.getElementById('rss_content').innerHTML = content.join("\n");
         })
         // refresh every 30min
-        setTimeout(rss,30000);
+        //setTimeout(rss,30000);
     }
-    rss();
+    // second rss widget can be added by removing comment
+    //rss();
     </script>
    <script>
     function rss() {
@@ -99,14 +100,19 @@
         const title = "News"
         let content = []        
         feed.items.forEach(function(entry) {
-            content.push('<p class=rss_title href="' + entry.link +'">' + entry.title + '</p>' + '<p class=rss_text>'+ entry.contentSnippet + '</p>' + '<p class=rss_time>'+ entry.isoDate + '</p>')
-        })
-        content.toString();        
+            let myString = entry.contentSnippet
+            // truncate length of content
+            const maxStrLength = 210;
+            const truncatedString = myString.length > maxStrLength ? `${myString.substring(0, maxStrLength)}...` : myString;
+
+            content.push('<a class=rss_title href="' + entry.link +'">' + entry.title + '</a>' + '<p class=rss_text>'+ truncatedString + '</p>' + '<p class=rss_time>'+ entry.isoDate + '</p>')
+        })  
         document.getElementById('rss2_title').innerHTML = title;
+        // join to remove comma and replace with new line
         document.getElementById('rss2_content').innerHTML = content.join("\n");
         })
         // refresh every 30min
-        setTimeout(rss,30000);
+        //setTimeout(rss,30000);
     }
     rss();
     </script>
