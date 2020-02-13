@@ -1,21 +1,21 @@
 .weather{
     position: absolute;
-    right: 12%;
-    top: 5%;      
-    width: 40%;    
+    left: 20%;
+    top: 45%;      
+    width: 30%;    
     display: block;      
 }
 .time {
     position: absolute;
-    left: 12%;
-    top: 15%;      
+    left: 15%;
+    top: 20%;      
     width: 40%;
     display: block;     
 }
 .rss1 {    
     position: absolute;
-    left: 30%;
-    top: 30%;      
+    left: 30%;    
+    top: 15%;      
     width: 20%;
     height: 60%;
     display: block;    
@@ -34,9 +34,9 @@
 .rss2 {    
     position: absolute;
     right: 15%;
-    top: 25%;      
-    width: 20%;
-    height: 60%;
+    top: 10%;      
+    width: 25%;
+    height: 65%;
     display: block;    
     overflow-y: auto;
     text-overflow: clip;
