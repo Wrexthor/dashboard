@@ -12,26 +12,8 @@
     width: 40%;
     display: block;     
 }
-.rss1 {    
-    position: absolute;
-    left: 30%;    
-    top: 15%;      
-    width: 20%;
-    height: 60%;
-    display: block;    
-    overflow-y: auto;
-    text-overflow: clip;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.233) rgba(0, 0, 0, 0);
-}
-.rss1::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.233);
-}
-.rss1::-webkit-scrollbar {
-    width: 5px;
-}
 
-.rss2 {    
+.rss {    
     position: absolute;
     right: 15%;
     top: 10%;      
@@ -43,10 +25,20 @@
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.233) rgba(0, 0, 0, 0);
 }
-.rss2::-webkit-scrollbar-thumb {
+
+.countdown {        
+    position: absolute;
+    left: 35%;
+    top: 80%;      
+    width: 40%;
+    line-height: 100%;    
+    display: block;        
+}
+
+.rss::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.233);
 }
-.rss2::-webkit-scrollbar {
+.rss::-webkit-scrollbar {
     width: 5px;
 }
 

@@ -40,14 +40,14 @@
     </script>
 </div>
 
-<div class=rss1>
-    <p class="w3-text-white"><span id="rss_title"></span></p>
-    <p class="w3-text-white"><span id="rss_content"></span></p>
+<div class="countdown w3-display-middle w3-text-white w3-center">
+    <p>Counting down</p>
+    <h3><span id="countdown"></span></h3>
 </div>
 
-<div class=rss2>
-    <p class="w3-text-white"><span id="rss2_title"></span></p>
-    <p class="w3-text-white"><span id="rss2_content"></span></p>
+<div class=rss>
+    <p class="w3-text-white"><span id="rss_title"></span></p>
+    <p class="w3-text-white"><span id="rss_content"></span></p>
 </div>
 
 <script>
@@ -63,31 +63,40 @@
     }
     timer();
     </script>
-        
-    <script>
-    function rss() {
-        // Note: some RSS feeds can't be loaded in the browser due to CORS security.
-        // To get around this, you can use a proxy.
-        const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
-    
-        let parser = new RSSParser();
-        parser.parseURL(CORS_PROXY + 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml', function(err, feed) {
-        if (err) throw err;
-        const title = feed.title
-        let content = []        
-        feed.items.forEach(function(entry) {
-            content.push('<p class=rss_title href="' + entry.link +'">' + entry.title + '</p>' + '<p class=rss_text>'+ entry.contentSnippet + '</p>' + '<p class=rss_time>'+ entry.isoDate + '</p>')
-        })
-        content.toString();        
-        document.getElementById('rss_title').innerHTML = title;
-        document.getElementById('rss_content').innerHTML = content.join("\n");
-        })
-        // refresh every 30min
-        setTimeout(rss,30000);
-    }
-    // second rss widget can be added by removing comment
-    //rss();
-    </script>
+
+<!-- Display the countdown timer in an element -->
+<p id="countdown"></p>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Mar 2, 2020 06:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
    <script>
     function rss() {
         // Note: some RSS feeds can't be loaded in the browser due to CORS security.
@@ -107,9 +116,9 @@
 
             content.push('<a class=rss_title href="' + entry.link +'">' + entry.title + '</a>' + '<p class=rss_text>'+ truncatedString + '</p>' + '<p class=rss_time>'+ entry.isoDate + '</p>')
         })  
-        document.getElementById('rss2_title').innerHTML = title;
+        document.getElementById('rss_title').innerHTML = title;
         // join to remove comma and replace with new line
-        document.getElementById('rss2_content').innerHTML = content.join("\n");
+        document.getElementById('rss_content').innerHTML = content.join("\n");
         })
         // refresh every 30min
         setTimeout(rss,30000);
